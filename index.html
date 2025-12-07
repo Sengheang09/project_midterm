@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Premium</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo">The Premium</div>
+    <ul class="menu">
+      <li class="active"><a href="#">Shop</a></li>
+      <li><a href="#">Brands</a></li>
+      <li><a href="#">Blog</a></li>
+    </ul>
+
+    <div class="right-menu">
+      <input type="text" placeholder="Search..." id="searchInput">
+      <button class="search-btn">Search</button>
+
+      <a href="cart.html" class="cart-icon">
+
+        🛒<span id="cartCount">0</span>
+      </a>
+
+      <img src="https://i.pinimg.com/originals/bc/c7/60/bcc760d8aa1f4b81b6fc0824b69cb927.jpg" class="avatar">
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <h1 class="hero-title">Shop</h1>
+    <p class="hero-sub">Give all you need</p>
+  </section>
+ 
+  <section class="main-section">
+    <aside class="sidebar">
+      <h3>Category</h3>
+      <ul class="sidebar-categories">
+        <li data-category="All" class="active">All</li>
+        <li data-category="Furniture">Furniture</li>
+        <li data-category="Shoes">Shoes</li>
+        <li data-category="Clothes">Clothes</li>
+        <li data-category="Electronics">Electronics</li>
+      </ul>
+    </aside>
+
+    <div class="products" id="productGrid"></div>
+  </section>
+
+  <div class="pagination" id="pagination"></div>
+
+  <section class="recommended">
+    <h2>Explore our recommendations</h2>
+    <div class="rec-grid" id="recGrid"></div>
+  </section>
+
+  <footer>
+    <div class="newsletter">
+      <h3>Ready to Get Our New Stuff?</h3>
+      <input type="text" placeholder="Your Email" id="newsletterEmail">
+      <button id="subscribeBtn">Subscribe</button>
+    </div>
+    <p>© 2025 Stuffuss. All Rights Reserved.</p>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

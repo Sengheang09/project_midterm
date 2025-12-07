@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your Cart</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1 style="text-align:center; margin-top:20px;">Your Shopping Cart</h1>
+
+  <div id="cartContainer" style="padding:20px"></div>
+
+  <script>
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    function renderCart() {
+      const c = document.getElementById("cartContainer");
+
+      if (cart.length === 0) {
+        c.innerHTML = "<h2>Your cart is empty.</h2>";
+        return;
+      }
+
+      let html = "";
+      let total = 0;
+
+      cart.forEach((item, i) => {
+        total += item.price * item.qty;
+
+        html += `
+          <div style="display:flex; gap:20px; background:white; padding:15px; margin:10px 0; border-radius:10px;">
+            <img src="${item.img}" style="width:120px; border-radius:8px;">
+            <div>
+              <h3>${item.name}</h3>
+              <p>Price: $${item.price}</p>
+              <p>Qty: 
+                <button onclick="decQty(${i})">-</button>
+                ${item.qty}
+                <button onclick="incQty(${i})">+</button>
+              </p>
+              <button style="color:red" onclick="removeItem(${i})">Remove</button>
+            </div>
+          </div>
+        `;
+      });
+
+      html += `<h2>Total: $${total.toFixed(2)}</h2>`;
+      html += `<button onclick="checkout()" class="btn2">Checkout</button>`;
+      
+      c.innerHTML = html;
+    }
+
+    function incQty(i) {
+      cart[i].qty++;
+      save();
+    }
+
+    function decQty(i) {
+      if (cart[i].qty > 1) cart[i].qty--;
+      save();
+    }
+
+    function removeItem(i) {
+      cart.splice(i, 1);
+      save();
+    }
+
+    function checkout() {
+      window.location.href = "checkout.html";
+    }
+
+    function save() {
+      localStorage.setItem("cart", JSON.stringify(cart));
+      renderCart();
+    }
+
+    renderCart();
+  </script>
+
+</body>
+</html>
